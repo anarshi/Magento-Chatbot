@@ -94,6 +94,8 @@ Go to **System > General Settings  > Chatbot Settings**
 
 ## Release Notes
 ### Magento2
+- **v1.0.1:**
+    - TODO
 - **v1.0.0:**
     - First working version
     - Messenger integration
