@@ -25,17 +25,25 @@ class Messenger extends \Werules\Chatbot\Block\Webhook\Index
 {
 //    protected $_messenger;
 
-//    public function __construct(
-//        \Magento\Framework\View\Element\Template\Context $context,
-//        \Werules\Chatbot\Helper\Data $helperData,
-//        \Werules\Chatbot\Model\ChatbotAPI $chatbotAPI,
-//        \Werules\Chatbot\Model\Message $message,
-//        \Werules\Chatbot\Model\Api\Messenger $messenger
-//    )
-//    {
-//        parent::__construct($context, $helperData, $chatbotAPI, $message);
-//        $this->_messenger = $messenger;
-//    }
+    public function __construct(
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Framework\ObjectManagerInterface $objectManager,
+        \Werules\Chatbot\Helper\Data $helperData,
+        \Werules\Chatbot\Model\ChatbotAPI $chatbotAPI,
+        \Magento\Framework\App\Request\Http $request,
+        \Werules\Chatbot\Model\MessageFactory $message
+//        \Werules\Chatbot\Cron\Worker $cronWorker
+    )
+    {
+        $this->_helper = $helperData;
+        $this->_chatbotAPI = $chatbotAPI;
+        $this->_request = $request;
+        $this->_messageModel = $message;
+        $this->_objectManager = $objectManager;
+        $this->_define = new \Werules\Chatbot\Helper\Define;
+//        $this->_cronWorker = $cronWorker;
+        parent::__construct($context);
+    }
 
     public function getVerificationHub($hub_token)
     {
